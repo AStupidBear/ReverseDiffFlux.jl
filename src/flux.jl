@@ -6,8 +6,10 @@ untrack(m) = fmap(Flux.data, m)
 
 function Flux.Optimise.update!(opt, x, x̄)
     Δ = -Flux.Optimise.apply!(opt, Flux.data(x), Flux.data(x̄))
-    Flux.data(x) .+= Flux.data(Δ)
-    ReverseDiff.deriv(x) .= 0
+    x_data = Flux.data(x)
+    x_deriv = ReverseDiff.deriv(x)
+    x_data .+= Flux.data(Δ)
+    x_deriv .= 0
     return x
 end
 
