@@ -1,0 +1,13 @@
+name = "ReverseDiffFlux"
+uuid = "d74ee430-fe01-4013-bf06-17c9f4347b8e"
+authors = ["Yao Lu <luyaocns@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
