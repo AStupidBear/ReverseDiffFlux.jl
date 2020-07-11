@@ -18,5 +18,5 @@ function Flux.destructure(m)
     end
     θ = vcat(vec.(ReverseDiff.value.(xs))...)
     re = p -> Flux._restructure(m, p)
-    return Flux.param(θ), re
+    return ReverseDiff.track(θ), re
 end
