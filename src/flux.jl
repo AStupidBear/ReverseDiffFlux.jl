@@ -9,14 +9,3 @@ function Flux.Optimise.update!(opt, x, x̄)
     x_deriv .= 0
     return x
 end
-
-function Flux.destructure(m)
-    xs = []
-    fmap(m) do x
-        x isa AbstractArray && push!(xs, x)
-        return x
-    end
-    θ = vcat(vec.(ReverseDiff.value.(xs))...)
-    re = p -> Flux._restructure(m, p)
-    return ReverseDiff.track(θ), re
-end
